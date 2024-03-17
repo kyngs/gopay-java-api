@@ -20,7 +20,7 @@ repositories {
     }
 }
 
-group = "cz.gopay"
+group = "xyz.kyngs.gopay"
 version = "3.0.0-SNAPSHOT"
 
 java {

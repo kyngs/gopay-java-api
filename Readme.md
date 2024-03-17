@@ -6,7 +6,7 @@ Detailed guide: [https://doc.gopay.com](https://doc.gopay.com)
 # Changes in the fork
 
 - Migrate to Gradle
-- Publish to a different repository
+- Publish to a different repository under a different group id (xyz.kyngs.gopay) to prevent conflicts with Maven Central
 - Switch logging to SLF4J (from log4j)
 
 # Requirements
@@ -41,7 +41,7 @@ https://repo.kyngs.xyz/
 
 <!-- GPAPI Apache Http Client -->
 <dependency>
-   	<groupId>cz.gopay</groupId>
+   	<groupId>xyz.kyngs.gopay</groupId>
    	<artifactId>gp-java-api-v3-apache-http-client</artifactId>
    	<version>3.0.0</version>
 </dependency>
@@ -55,7 +55,7 @@ repositories {
 }
 
 dependencies {
-    implementation("cz.gopay:gp-java-api-v3-apache-http-client:3.0.0")
+    implementation("xyz.kyngs.gopay:gp-java-api-v3-apache-http-client:3.0.0")
 }
 ```
 
@@ -237,7 +237,7 @@ Each integration has its own maven module.
  
      ```xml
      <dependency>
-        <groupId>cz.gopay</groupId>
+        <groupId>xyz.kyngs.gopay</groupId>
         <artifactId>gp-java-api-v3-resteasy</artifactId>
         <version>3.7.2</version>
     </dependency>
@@ -253,7 +253,7 @@ Each integration has its own maven module.
      
    ```xml
      <dependency>
-         <groupId>cz.gopay</groupId>
+         <groupId>xyz.kyngs.gopay</groupId>
          <artifactId>gp-java-api-v3-apache-cxf</artifactId>
          <version>3.7.2</version>
      </dependency>
