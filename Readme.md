@@ -240,7 +240,7 @@ Each integration has its own maven module.
      <dependency>
         <groupId>xyz.kyngs.gopay</groupId>
         <artifactId>gp-java-api-v3-resteasy</artifactId>
-        <version>3.7.2</version>
+        <version>3.0.0</version>
     </dependency>
     ```
 
@@ -256,7 +256,7 @@ Each integration has its own maven module.
      <dependency>
          <groupId>xyz.kyngs.gopay</groupId>
          <artifactId>gp-java-api-v3-apache-cxf</artifactId>
-         <version>3.7.2</version>
+         <version>3.0.0</version>
      </dependency>
     ```
  

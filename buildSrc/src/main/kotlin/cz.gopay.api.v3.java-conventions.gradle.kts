@@ -21,7 +21,7 @@ repositories {
 }
 
 group = "xyz.kyngs.gopay"
-version = "3.0.0-SNAPSHOT"
+version = "3.0.0"
 
 java {
     withSourcesJar()
