@@ -1,0 +1,37 @@
+[versions]
+com-fasterxml-jackson-core-jackson-databind = "2.13.4.2"
+com-fasterxml-jackson-jaxrs-jackson-jaxrs-json-provider = "2.13.1"
+javax-ws-rs-javax-ws-rs-api = "2.1.1"
+javax-xml-bind-jaxb-api = "2.3.1"
+org-apache-cxf-cxf-api = "2.7.18"
+org-apache-cxf-cxf-rt-frontend-jaxws = "3.5.0"
+org-apache-cxf-cxf-rt-rs-client = "3.5.0"
+org-apache-cxf-cxf-rt-transports-http = "3.5.0"
+org-apache-cxf-cxf-rt-transports-http-jetty = "3.5.0"
+org-apache-httpcomponents-fluent-hc = "4.5.13"
+org-apache-httpcomponents-httpclient = "4.5.13"
+org-apache-logging-log4j-log4j-core = "2.17.1"
+org-jboss-resteasy-resteasy-client = "5.0.2.Final"
+org-jboss-resteasy-resteasy-jackson2-provider = "5.0.2.Final"
+org-jboss-resteasy-resteasy-jaxb-provider = "5.0.2.Final"
+org-jboss-resteasy-resteasy-multipart-provider = "5.0.2.Final"
+org-junit-jupiter-junit-jupiter-engine = "5.8.2"
+
+[libraries]
+com-fasterxml-jackson-core-jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "com-fasterxml-jackson-core-jackson-databind" }
+com-fasterxml-jackson-jaxrs-jackson-jaxrs-json-provider = { module = "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider", version.ref = "com-fasterxml-jackson-jaxrs-jackson-jaxrs-json-provider" }
+javax-ws-rs-javax-ws-rs-api = { module = "javax.ws.rs:javax.ws.rs-api", version.ref = "javax-ws-rs-javax-ws-rs-api" }
+javax-xml-bind-jaxb-api = { module = "javax.xml.bind:jaxb-api", version.ref = "javax-xml-bind-jaxb-api" }
+org-apache-cxf-cxf-api = { module = "org.apache.cxf:cxf-api", version.ref = "org-apache-cxf-cxf-api" }
+org-apache-cxf-cxf-rt-frontend-jaxws = { module = "org.apache.cxf:cxf-rt-frontend-jaxws", version.ref = "org-apache-cxf-cxf-rt-frontend-jaxws" }
+org-apache-cxf-cxf-rt-rs-client = { module = "org.apache.cxf:cxf-rt-rs-client", version.ref = "org-apache-cxf-cxf-rt-rs-client" }
+org-apache-cxf-cxf-rt-transports-http = { module = "org.apache.cxf:cxf-rt-transports-http", version.ref = "org-apache-cxf-cxf-rt-transports-http" }
+org-apache-cxf-cxf-rt-transports-http-jetty = { module = "org.apache.cxf:cxf-rt-transports-http-jetty", version.ref = "org-apache-cxf-cxf-rt-transports-http-jetty" }
+org-apache-httpcomponents-fluent-hc = { module = "org.apache.httpcomponents:fluent-hc", version.ref = "org-apache-httpcomponents-fluent-hc" }
+org-apache-httpcomponents-httpclient = { module = "org.apache.httpcomponents:httpclient", version.ref = "org-apache-httpcomponents-httpclient" }
+org-apache-logging-log4j-log4j-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "org-apache-logging-log4j-log4j-core" }
+org-jboss-resteasy-resteasy-client = { module = "org.jboss.resteasy:resteasy-client", version.ref = "org-jboss-resteasy-resteasy-client" }
+org-jboss-resteasy-resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider", version.ref = "org-jboss-resteasy-resteasy-jackson2-provider" }
+org-jboss-resteasy-resteasy-jaxb-provider = { module = "org.jboss.resteasy:resteasy-jaxb-provider", version.ref = "org-jboss-resteasy-resteasy-jaxb-provider" }
+org-jboss-resteasy-resteasy-multipart-provider = { module = "org.jboss.resteasy:resteasy-multipart-provider", version.ref = "org-jboss-resteasy-resteasy-multipart-provider" }
+org-junit-jupiter-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "org-junit-jupiter-junit-jupiter-engine" }

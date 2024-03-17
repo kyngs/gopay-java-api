@@ -11,3 +11,4 @@
 release.properties
 *.releaseBackup
 dependency-reduced-pom.xml
+.gradle/
