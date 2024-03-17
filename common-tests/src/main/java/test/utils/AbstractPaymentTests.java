@@ -11,27 +11,16 @@ import cz.gopay.api.v3.model.common.Currency;
 import cz.gopay.api.v3.model.common.StatementGeneratingFormat;
 import cz.gopay.api.v3.model.eet.EETReceipt;
 import cz.gopay.api.v3.model.eet.EETReceiptFilter;
-import cz.gopay.api.v3.model.payment.BasePayment;
-import cz.gopay.api.v3.model.payment.Lang;
-import cz.gopay.api.v3.model.payment.Payment;
-import cz.gopay.api.v3.model.payment.BasePaymentBuilder;
-import cz.gopay.api.v3.model.payment.PaymentFactory;
-import cz.gopay.api.v3.model.payment.PaymentResult;
-import cz.gopay.api.v3.model.payment.support.AccountStatement;
-import cz.gopay.api.v3.model.payment.support.Payer;
-import cz.gopay.api.v3.model.payment.support.PaymentInstrument;
-import cz.gopay.api.v3.model.payment.support.PayerBuilder;
-import cz.gopay.api.v3.model.payment.support.PaymentInstrumentRoot;
-import cz.gopay.api.v3.model.payment.support.Recurrence;
-import cz.gopay.api.v3.model.payment.support.RecurrenceCycle;
+import cz.gopay.api.v3.model.payment.*;
+import cz.gopay.api.v3.model.payment.support.*;
+import org.junit.jupiter.api.Assertions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.Assertions;
 
 /**
  *
@@ -39,7 +28,7 @@ import org.junit.jupiter.api.Assertions;
  */
 public abstract class AbstractPaymentTests implements RestClientTest {
 
-    private static final Logger logger = LogManager.getLogger(AbstractPaymentTests.class);
+    private static final Logger logger = LoggerFactory.getLogger(AbstractPaymentTests.class);
 
     private BasePayment createTestBasePayment() {
         String url = "https://www.eshop123.cz/";

@@ -1,31 +1,23 @@
 package cz.gopay.api.v3.impl.apacheclient;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import cz.gopay.api.v3.PaymentClient;
 import cz.gopay.api.v3.model.access.AuthHeader;
 import cz.gopay.api.v3.model.common.Currency;
 import cz.gopay.api.v3.model.eet.EETReceipt;
 import cz.gopay.api.v3.model.eet.EETReceiptFilter;
-import cz.gopay.api.v3.model.payment.BasePayment;
-import cz.gopay.api.v3.model.payment.CapturePayment;
-import cz.gopay.api.v3.model.payment.NextPayment;
-import cz.gopay.api.v3.model.payment.Payment;
-import cz.gopay.api.v3.model.payment.PaymentResult;
-import cz.gopay.api.v3.model.payment.RefundPayment;
+import cz.gopay.api.v3.model.payment.*;
 import cz.gopay.api.v3.model.payment.support.AccountStatement;
 import cz.gopay.api.v3.model.payment.support.PaymentInstrumentRoot;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
 import org.apache.http.util.EntityUtils;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -38,7 +30,7 @@ public class HttpClientPaymentClientImpl extends AbstractImpl implements Payment
 
     protected HttpClientPaymentClientImpl(String apiUrl) {
         super(apiUrl);
-        logger = LogManager.getLogger(HttpClientAuthClientImpl.class);
+        logger = LoggerFactory.getLogger(HttpClientAuthClientImpl.class);
     }
 
     @Override

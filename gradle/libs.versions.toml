@@ -11,6 +11,7 @@ org-apache-cxf-cxf-rt-transports-http-jetty = "3.5.0"
 org-apache-httpcomponents-fluent-hc = "4.5.13"
 org-apache-httpcomponents-httpclient = "4.5.13"
 org-apache-logging-log4j-log4j-core = "2.17.1"
+org-slf4j-slf4j-api = "2.0.12"
 org-jboss-resteasy-resteasy-client = "5.0.2.Final"
 org-jboss-resteasy-resteasy-jackson2-provider = "5.0.2.Final"
 org-jboss-resteasy-resteasy-jaxb-provider = "5.0.2.Final"
@@ -35,3 +36,4 @@ org-jboss-resteasy-resteasy-jackson2-provider = { module = "org.jboss.resteasy:r
 org-jboss-resteasy-resteasy-jaxb-provider = { module = "org.jboss.resteasy:resteasy-jaxb-provider", version.ref = "org-jboss-resteasy-resteasy-jaxb-provider" }
 org-jboss-resteasy-resteasy-multipart-provider = { module = "org.jboss.resteasy:resteasy-multipart-provider", version.ref = "org-jboss-resteasy-resteasy-multipart-provider" }
 org-junit-jupiter-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "org-junit-jupiter-junit-jupiter-engine" }
+org-slf4j-slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "org-slf4j-slf4j-api" }

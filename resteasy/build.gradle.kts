@@ -15,7 +15,6 @@ dependencies {
     api(libs.org.jboss.resteasy.resteasy.jackson2.provider)
     api(libs.org.jboss.resteasy.resteasy.multipart.provider)
     api(project(":gp-java-api-v3-common"))
-    api(libs.org.apache.logging.log4j.log4j.core)
     testImplementation(project(":common-tests"))
 }
 

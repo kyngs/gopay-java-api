@@ -16,7 +16,7 @@ dependencies {
     api(libs.org.apache.cxf.cxf.rt.transports.http)
     api(libs.org.apache.cxf.cxf.rt.transports.http.jetty)
     api(libs.org.apache.cxf.cxf.api)
-    api(libs.org.apache.logging.log4j.log4j.core)
+    api(libs.org.slf4j.slf4j.api)
     testImplementation(project(":common-tests"))
 }
 

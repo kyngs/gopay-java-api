@@ -7,19 +7,20 @@ package cz.gopay.api.v3.impl.apacheclient;
 import cz.gopay.api.v3.AuthClient;
 import cz.gopay.api.v3.model.access.AccessToken;
 import cz.gopay.api.v3.model.access.AuthHeader;
-import java.io.IOException;
-import javax.ws.rs.WebApplicationException;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import javax.ws.rs.WebApplicationException;
 
 public class HttpClientAuthClientImpl extends AbstractImpl implements AuthClient {
 
     protected HttpClientAuthClientImpl(String apiUrl) {
         super(apiUrl);
-        super.logger = LogManager.getLogger(HttpClientAuthClientImpl.class);
+        super.logger = LoggerFactory.getLogger(HttpClientAuthClientImpl.class);
     }
 
     @Override
@@ -27,10 +28,10 @@ public class HttpClientAuthClientImpl extends AbstractImpl implements AuthClient
         Form form = Form.form();
         form.add(SCOPE, scope);
         form.add(GRANT_TYPE, grantType);
-        Response respose = null;
+        Response response = null;
 
         try {
-            respose = Request.Post(apiUrl + "/oauth2/token")
+            response = Request.Post(apiUrl + "/oauth2/token")
                     .addHeader(AUTHORIZATION, authHeader.getAuhorization())
                     .addHeader(CONTENT_TYPE, "application/x-www-form-urlencoded")
                     .bodyForm(form.build())
@@ -40,7 +41,7 @@ public class HttpClientAuthClientImpl extends AbstractImpl implements AuthClient
             throw new WebApplicationException();
         }
 
-        return unMarshall(respose, AccessToken.class);
+        return unMarshall(response, AccessToken.class);
     }
 
 }

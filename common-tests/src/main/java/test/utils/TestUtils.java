@@ -7,9 +7,10 @@ package test.utils;
 
 import cz.gopay.api.v3.GPClientException;
 import cz.gopay.api.v3.model.ErrorElement;
-import java.util.List;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.slf4j.Logger;
+
+import java.util.List;
 
 /**
  *
@@ -33,7 +34,7 @@ public class TestUtils {
         for (ErrorElement element : errorMessages) {
             builder.append(element.getErrorName()).append(", ");
         }
-        logger.fatal(builder.toString());
+        logger.error(builder.toString());
         Assertions.fail(builder.toString());
     }
 }

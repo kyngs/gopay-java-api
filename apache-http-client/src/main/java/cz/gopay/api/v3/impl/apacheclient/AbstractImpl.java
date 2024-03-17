@@ -7,16 +7,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.deser.DeserializationProblemHandler;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import cz.gopay.api.v3.model.APIError;
-import java.io.IOException;
-import javax.ws.rs.WebApplicationException;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.util.EntityUtils;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+
+import java.io.IOException;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *

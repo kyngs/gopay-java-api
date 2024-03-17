@@ -13,7 +13,7 @@ dependencies {
     api(project(":gp-java-api-v3-common"))
     api(libs.org.apache.httpcomponents.httpclient)
     api(libs.org.apache.httpcomponents.fluent.hc)
-    api(libs.org.apache.logging.log4j.log4j.core)
+    api(libs.org.slf4j.slf4j.api)
     testImplementation(project(":common-tests"))
 }
 

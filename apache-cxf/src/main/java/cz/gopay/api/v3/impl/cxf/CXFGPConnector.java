@@ -8,16 +8,12 @@ import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import cz.gopay.api.v3.AbstractGPConnector;
 import cz.gopay.api.v3.model.access.AccessToken;
 import cz.gopay.api.v3.model.access.OAuth;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-
 import org.apache.cxf.jaxrs.client.Client;
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
-import org.apache.cxf.jaxrs.client.WebClient;
-import org.apache.cxf.transport.http.Headers;
-import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  *

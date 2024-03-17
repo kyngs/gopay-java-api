@@ -10,7 +10,7 @@ plugins {
 
 dependencies {
     api(libs.org.junit.jupiter.junit.jupiter.engine)
-    api(libs.org.apache.logging.log4j.log4j.core)
+    api(libs.org.slf4j.slf4j.api)
     compileOnly(project(":gp-java-api-v3-common"))
 }
 

@@ -10,20 +10,13 @@ import cz.gopay.api.v3.model.access.OAuth;
 import cz.gopay.api.v3.model.common.Currency;
 import cz.gopay.api.v3.model.eet.EETReceipt;
 import cz.gopay.api.v3.model.eet.EETReceiptFilter;
-import cz.gopay.api.v3.model.payment.BasePayment;
-import cz.gopay.api.v3.model.payment.CapturePayment;
-import cz.gopay.api.v3.model.payment.NextPayment;
-import cz.gopay.api.v3.model.payment.Payment;
-import cz.gopay.api.v3.model.payment.PaymentResult;
-import cz.gopay.api.v3.model.payment.RefundPayment;
+import cz.gopay.api.v3.model.payment.*;
 import cz.gopay.api.v3.model.payment.support.AccountStatement;
 import cz.gopay.api.v3.model.payment.support.PaymentInstrumentRoot;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
-
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -34,7 +27,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	
 	public static final String VERSION = "${project.version}";
 	
-	protected static final Logger logger = LogManager.getLogger(AbstractGPConnector.class);
+	protected static final Logger logger = LoggerFactory.getLogger(AbstractGPConnector.class);
 	
 	public static int CONNECTION_POOL_SIZE = 1;
 	public static int CONNECTION_SETUP_TO = 1;
@@ -75,7 +68,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 							+ "]");
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": get-token Error [" + clientId + "] RC ["
+			logger.error(getClass().getSimpleName() + ": get-token Error [" + clientId + "] RC ["
 					+ e.getResponse().getStatus() + "] Ex: " + e.getResponse().getStatusInfo(), e);
 			GPExceptionHandler.handleException(e);
 		}
@@ -96,7 +89,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					payment);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": create-payment Error [" + payment.getPayer() + "] -> ["
+			logger.error(getClass().getSimpleName() + ": create-payment Error [" + payment.getPayer() + "] -> ["
 							+ payment.getTarget() + "] RC [" + e.getResponse().getStatus() + "] Ex: " + e.getResponse()
 							.getStatusInfo(),
 					e);
@@ -118,7 +111,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 							amount);
 			return r;
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": refund-payment Error [" + id + "] amnt[" + amount + "] RC ["
+			logger.error(getClass().getSimpleName() + ": refund-payment Error [" + id + "] amnt[" + amount + "] RC ["
 					+ e.getResponse().getStatus() + "] Ex: " + e.getResponse().getStatusInfo(), e);
 			GPExceptionHandler.handleException(e);
 		}
@@ -138,7 +131,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 							id, refundPayment);
 			return r;
 		} catch (WebApplicationException e) {
-			logger.fatal(
+			logger.error(
 					getClass().getSimpleName() + ": refund-payment Error [" + id + "] amnt[" + refundPayment + "] RC ["
 							+ e.getResponse().getStatus() + "] Ex: " + e.getResponse().getStatusInfo(), e);
 			GPExceptionHandler.handleException(e);
@@ -159,7 +152,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					AuthHeader.build(accessToken != null ? accessToken.getAccessToken() : null), id, nextPayment);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(
+			logger.error(
 					getClass().getSimpleName() + ": create-recurrent Error parent id[" + id + "] [" + nextPayment
 							.getOrderNumber()
 							+ "] RC [" + e.getResponse().getStatus() + "] Ex: " + e.getResponse().getStatusInfo(),
@@ -182,7 +175,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					id);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": void recurrency Error parent id[" + id + "] RC ["
+			logger.error(getClass().getSimpleName() + ": void recurrency Error parent id[" + id + "] RC ["
 					+ e.getResponse().getStatus() + "] Ex: " + e.getResponse().getStatusInfo(), e);
 			GPExceptionHandler.handleException(e);
 		}
@@ -202,7 +195,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					id);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": capture payment Error [" + id + "] RC ["
+			logger.error(getClass().getSimpleName() + ": capture payment Error [" + id + "] RC ["
 					+ e.getResponse().getStatus() + "] Ex: " + e.getResponse().getStatusInfo(), e);
 			GPExceptionHandler.handleException(e);
 		}
@@ -223,7 +216,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					capturePayment);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": capture payment Error [" + id + "] RC ["
+			logger.error(getClass().getSimpleName() + ": capture payment Error [" + id + "] RC ["
 					+ e.getResponse().getStatus() + "] Ex: " + e.getResponse().getStatusInfo(), e);
 			GPExceptionHandler.handleException(e);
 		}
@@ -242,7 +235,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					.voidAuthorization(AuthHeader.build(accessToken != null ? accessToken.getAccessToken() : null), id);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": void auth payment Error [" + id + "] RC ["
+			logger.error(getClass().getSimpleName() + ": void auth payment Error [" + id + "] RC ["
 					+ e.getResponse().getStatus() + "] Ex: " + e.getResponse().getStatusInfo(), e);
 			GPExceptionHandler.handleException(e);
 		}
@@ -261,7 +254,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					.getPayment(AuthHeader.build(accessToken != null ? accessToken.getAccessToken() : null), id);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": payment-status Error [" + id + "] RC [" + e.getResponse()
+			logger.error(getClass().getSimpleName() + ": payment-status Error [" + id + "] RC [" + e.getResponse()
 					.getStatus()
 					+ "] Ex: " + e.getResponse().getStatusInfo(), e);
 			GPExceptionHandler.handleException(e);
@@ -283,7 +276,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 							goId, currency);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(
+			logger.error(
 					getClass().getSimpleName() + ": payment-instruments Error [" + goId + "][" + currency + "] RC [" + e
 							.getResponse()
 							.getStatus()
@@ -306,7 +299,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 							accountStatement);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": generate-statement Error [" + accountStatement + "] RC [" + e
+			logger.error(getClass().getSimpleName() + ": generate-statement Error [" + accountStatement + "] RC [" + e
 					.getResponse()
 					.getStatus()
 					+ "] Ex: " + e.getResponse().getStatusInfo(), e);
@@ -328,7 +321,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					AuthHeader.build(accessToken != null ? accessToken.getAccessToken() : null), filter);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": eet-receipt findByFilter " + filter.toString() + " RC [" + e
+			logger.error(getClass().getSimpleName() + ": eet-receipt findByFilter " + filter.toString() + " RC [" + e
 					.getResponse()
 					.getStatus()
 					+ "] Ex: " + e.getResponse().getStatusInfo(), e);
@@ -348,7 +341,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 					AuthHeader.build(accessToken != null ? accessToken.getAccessToken() : null), id);
 			
 		} catch (WebApplicationException e) {
-			logger.fatal(getClass().getSimpleName() + ": eet-receipt findByPaymentId PaymentId=[" + id + "] RC [" + e
+			logger.error(getClass().getSimpleName() + ": eet-receipt findByPaymentId PaymentId=[" + id + "] RC [" + e
 					.getResponse()
 					.getStatus()
 					+ "] Ex: " + e.getResponse().getStatusInfo(), e);

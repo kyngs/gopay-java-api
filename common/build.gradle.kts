@@ -11,7 +11,7 @@ plugins {
 dependencies {
     api(libs.javax.ws.rs.javax.ws.rs.api)
     api(libs.javax.xml.bind.jaxb.api)
-    api(libs.org.apache.logging.log4j.log4j.core)
+    api(libs.org.slf4j.slf4j.api)
 }
 
 description = "gp-java-api-common"
