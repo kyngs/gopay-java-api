@@ -8,6 +8,7 @@ Detailed guide: [https://doc.gopay.com](https://doc.gopay.com)
 - Migrate to Gradle
 - Publish to a different repository under a different group id (xyz.kyngs.gopay) to prevent conflicts with Maven Central
 - Switch logging to SLF4J (from log4j)
+- Cleanup logging (e.g. log request data and response at DEBUG level, not INFO)
 
 # Requirements
 

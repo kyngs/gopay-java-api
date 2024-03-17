@@ -56,14 +56,14 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public IGPConnector getAppToken(String clientId, String clientCredentials, String scope) throws GPClientException {
 		try {
-			logger.info("get-token [" + clientId + "]");
+			logger.debug("get-token [" + clientId + "]");
 			
 			AuthClient simple = createRESTClientProxy(apiUrl, AuthClient.class);
 			
 			accessToken = simple.loginApplication(AuthHeader.build(clientId, clientCredentials),
 					OAuth.GRANT_TYPE_CLIENT_CREDENTIALS, scope != null ? scope : OAuth.SCOPE_PAYMENT_ALL);
 			
-			logger.info("get-token [" + clientId + "] -> [" + accessToken.getAccessToken() + "]");
+			logger.debug("get-token [" + clientId + "] -> [" + accessToken.getAccessToken() + "]");
 			
 		} catch (WebApplicationException e) {
 			logger.error("get-token Error [" + clientId + "] RC ["
@@ -77,7 +77,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public Payment createPayment(BasePayment payment) throws GPClientException {
 		try {
-			logger.info("create-payment payer[" + payment.getPayer() + "] -> [" + payment.getTarget() + "]");
+			logger.debug("create-payment payer[" + payment.getPayer() + "] -> [" + payment.getTarget() + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -98,7 +98,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public PaymentResult refundPayment(Long id, Long amount) throws GPClientException {
 		try {
-			logger.info("refund-payment [" + id + "] amnt[" + amount + "]");
+			logger.debug("refund-payment [" + id + "] amnt[" + amount + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -118,7 +118,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public PaymentResult refundPayment(Long id, RefundPayment refundPayment) throws GPClientException {
 		try {
-			logger.info("refund-payment [" + id + "] amnt[" + refundPayment + "]");
+			logger.debug("refund-payment [" + id + "] amnt[" + refundPayment + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -138,7 +138,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public Payment createRecurrentPayment(Long id, NextPayment nextPayment) throws GPClientException {
 		try {
-			logger.info("create-recurrent - parent id[" + id + "] [" + nextPayment.getOrderNumber() + "]");
+			logger.debug("create-recurrent - parent id[" + id + "] [" + nextPayment.getOrderNumber() + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -159,7 +159,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public PaymentResult voidRecurrency(Long id) throws GPClientException {
 		try {
-			logger.info("void-recurrency parent id [" + id + "]");
+			logger.debug("void-recurrency parent id [" + id + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -179,7 +179,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public PaymentResult capturePayment(Long id) throws GPClientException {
 		try {
-			logger.info("capture payment [" + id + "]");
+			logger.debug("capture payment [" + id + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -199,7 +199,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public PaymentResult capturePayment(Long id, CapturePayment capturePayment) throws GPClientException {
 		try {
-			logger.info("capture payment with amount [" + id + "]");
+			logger.debug("capture payment with amount [" + id + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -220,7 +220,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public PaymentResult voidAuthorization(Long id) throws GPClientException {
 		try {
-			logger.info("void auth payment [" + id + "]");
+			logger.debug("void auth payment [" + id + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -239,7 +239,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public Payment paymentStatus(Long id) throws GPClientException {
 		try {
-			logger.info("payment-status [" + id + "]");
+			logger.debug("payment-status [" + id + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -260,7 +260,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public PaymentInstrumentRoot getPaymentInstruments(Long goId, Currency currency) throws GPClientException {
 		try {
-			logger.info("payment-instruments [" + goId + "][" + currency + "]");
+			logger.debug("payment-instruments [" + goId + "][" + currency + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -282,7 +282,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public byte[] generateStatement(AccountStatement accountStatement) throws GPClientException {
 		try {
-			logger.info("generate-statement [" + accountStatement + "]");
+			logger.debug("generate-statement [" + accountStatement + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -305,7 +305,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public List<EETReceipt> findEETREceiptsByFilter(EETReceiptFilter filter) throws GPClientException {
 		try {
-			logger.info("eet-receipt findByFilter " + filter.toString());
+			logger.debug("eet-receipt findByFilter " + filter.toString());
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
@@ -325,7 +325,7 @@ public abstract class AbstractGPConnector implements IGPConnector {
 	@Override
 	public List<EETReceipt> getEETReceiptByPaymentId(Long id) throws GPClientException {
 		try {
-			logger.info("eet-receipt findByPaymentId PaymentId=[" + id + "]");
+			logger.debug("eet-receipt findByPaymentId PaymentId=[" + id + "]");
 			
 			PaymentClient paymentClient = createRESTClientProxy(apiUrl, PaymentClient.class);
 			
