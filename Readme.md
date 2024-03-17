@@ -1,8 +1,13 @@
-# GoPay Java API #
+# Fork of GoPay Java API #
 
 
 Detailed guide: [https://doc.gopay.com](https://doc.gopay.com)
 
+# Changes in the fork
+
+- Migrate to Gradle
+- Publish to a different repository
+- Switch logging to SLF4J (from log4j)
 
 # Requirements
 
@@ -11,37 +16,49 @@ Detailed guide: [https://doc.gopay.com](https://doc.gopay.com)
 # Building
 
 ```bash
-git clone https://github.com/gopaycommunity/gopay-java-api.git
+git clone https://github.com/kyngs/gopay-java-api.git
 cd gopay-java-api
-mvn package
+./gradlew build
 ```
 
  - Building a specific module
 ```bash
-git clone https://github.com/gopaycommunity/gopay-java-api.git
+git clone https://github.com/kyngs/gopay-java-api.git
 cd gopay-java-api/<module-name>
-mvn package
+./gradlew build
 ```
-# Maven #
+# Maven/Gradle
 
-All artifacts are located in the maven central repository. 
+All artifacts are located in my repository.
+https://repo.kyngs.xyz/
 
-http://mvnrepository.com/artifact/cz.gopay
-
+## Maven
 ```xml
-<!-- GPAPI common -->
-<dependency>
-    <groupId>cz.gopay</groupId>
-    <artifactId>gp-java-api-v3-common</artifactId>
-    <version>3.7.2</version>
-</dependency>
+<repository>
+    <id>kyngs-repo</id>
+    <url>https://repo.kyngs.xyz/public</url>
+</repository>
+
 <!-- GPAPI Apache Http Client -->
 <dependency>
    	<groupId>cz.gopay</groupId>
    	<artifactId>gp-java-api-v3-apache-http-client</artifactId>
-   	<version>3.7.2</version>
+   	<version>3.0.0</version>
 </dependency>
 ```
+
+## Gradle
+
+```kotlin
+repositories {
+    maven("https://repo.kyngs.xyz/public")
+}
+
+dependencies {
+    implementation("cz.gopay:gp-java-api-v3-apache-http-client:3.0.0")
+}
+```
+
 ## OAuth
  
  
@@ -279,5 +296,5 @@ Contributions from others would be very much appreciated! Send pull request/ iss
 
 ## License
 
-Copyright (c) 2016 GoPay.com. MIT Licensed, see LICENSE for details.
+MIT Licensed, see LICENSE for details.
 
