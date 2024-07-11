@@ -1,5 +1,6 @@
 package cz.gopay.api.v3.model;
 
+import java.util.StringJoiner;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -78,4 +79,15 @@ public class ErrorElement {
         return description;
     }
 
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", ErrorElement.class.getSimpleName() + "[", "]")
+                .add("description='" + description + "'")
+                .add("scope=" + scope)
+                .add("field='" + field + "'")
+                .add("errorCode=" + errorCode)
+                .add("errorName='" + errorName + "'")
+                .add("message='" + message + "'")
+                .toString();
+    }
 }

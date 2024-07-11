@@ -3,6 +3,7 @@ package cz.gopay.api.v3.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.StringJoiner;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -68,4 +69,11 @@ public class APIError {
         this.errorMessages = errors;
     }
 
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", APIError.class.getSimpleName() + "[", "]")
+                .add("dateIssued=" + dateIssued)
+                .add("errorMessages=" + errorMessages)
+                .toString();
+    }
 }
